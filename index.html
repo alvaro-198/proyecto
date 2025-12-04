@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TechStore - Componentes Informáticos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet" />
+    
+    <style>
+    /* Reset y base */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    body {
+        background-color: #f4f4f4;
+        color: #333;
+    }
+
+    /* HEADER */
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 40px;
+        background-color: #0b0b0d;
+        color: white;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+
+    .logo {
+        font-size: 28px;
+        font-weight: 600;
+    }
+
+    nav a {
+        color: white;
+        margin-left: 20px;
+        text-decoration: none;
+        font-weight: 400;
+        transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+        color: #00bfff;
+    }
+
+    .btn-nav {
+        padding: 7px 15px;
+        background-color: #00bfff;
+        border-radius: 5px;
+    }
+
+    /* HERO */
+    .hero {
+        display: flex;
+        align-items: center;
+        padding: 60px;
+        background-color: #111;
+        color: white;
+        flex-wrap: wrap;
+    }
+
+    .hero img {
+        width: 45%;
+        border-radius: 10px;
+        min-width: 320px;
+    }
+
+    .hero .text {
+        width: 50%;
+        min-width: 300px;
+        padding-right: 30px;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+        margin-bottom: 15px;
+    }
+
+    .hero p {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    .btn-hero {
+        background: #00bfff;
+        color: white;
+        padding: 12px 25px;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 600;
+    }
+
+    /* PRODUCTOS */
+    .productos {
+        padding: 50px 20px;
+        text-align: center;
+    }
+
+    .productos h2 {
+        font-size: 36px;
+        margin-bottom: 20px;
+        font-weight: 600;
+    }
+
+    .buscador {
+        margin-bottom: 25px;
+    }
+
+    .buscador input {
+        width: 300px;
+        max-width: 90%;
+        padding: 12px;
+        border-radius: 8px;
+        border: 1px solid #999;
+        font-size: 14px;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 30px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .item {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .item:hover {
+        transform: translateY(-5px);
+    }
+
+    .item img {
+        width: 100%;
+        height: 160px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 12px;
+    }
+
+    .item h4 {
+        font-weight: 400;
+        color: #666;
+        font-size: 14px;
+        margin-bottom: 4px;
+        text-transform: capitalize;
+    }
+
+    .item h3 {
+        margin-bottom: 10px;
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .item p {
+        font-size: 14px;
+        color: #444;
+        margin-bottom: 15px;
+        text-align: center;
+        flex-grow: 1;
+    }
+
+    .precio {
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        background: #0b0b0d;
+        color: white;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 15px;
+        transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+        background: #00bfff;
+    }
+
+    /* LOGIN */
+    .login-section {
+        padding: 50px 20px;
+        background: #fff;
+        text-align: center;
+    }
+
+    .login-section h2 {
+        font-size: 32px;
+        margin-bottom: 20px;
+        font-weight: 600;
+    }
+
+    .login-box {
+        max-width: 400px;
+        margin: auto;
+        background: #f0f0f0;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .login-box label {
+        display: block;
+        margin-top: 15px;
+        text-align: left;
+        font-weight: 600;
+        font-size: 14px;
+    }
+
+    .login-box input {
+        width: 100%;
+        padding: 12px;
+        margin-top: 5px;
+        border-radius: 8px;
+        border: 1px solid #999;
+        font-size: 14px;
+    }
+
+    .btn-login {
+        margin-top: 20px;
+        width: 100%;
+        background: #00bfff;
+        border: none;
+        padding: 12px;
+        color: white;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 600;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-login:hover {
+        background: #008fcc;
+    }
+
+    .registro-link {
+        margin-top: 15px;
+        font-size: 14px;
+    }
+
+    .registro-link a {
+        color: #00bfff;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    .registro-link a:hover {
+        text-decoration: underline;
+    }
+
+    /* CARRITO */
+    .carrito {
+        position: fixed;
+        top: 50px;
+        right: 20px;
+        width: 300px;
+        background: #fff;
+        border: 1px solid #999;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        display: none;
+        z-index: 200;
+    }
+
+    .carrito h3 {
+        margin-bottom: 15px;
+    }
+
+    .carrito ul {
+        list-style: none;
+        max-height: 250px;
+        overflow-y: auto;
+        margin-bottom: 15px;
+    }
+
+    .carrito li {
+        margin-bottom: 10px;
+    }
+
+    .carrito button {
+        width: 100%;
+        background: #0b0b0d;
+        color: white;
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    .carrito button:hover {
+        background: #00bfff;
+    }
+
+    /* FOOTER */
+    footer {
+        background: #0b0b0d;
+        color: white;
+        text-align: center;
+        padding: 25px;
+        margin-top: 50px;
+        font-size: 14px;
+    }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="logo">TechStore</div>
+        <nav>
+            <a href="#">Inicio</a>
+            <a href="#productos">Productos</a>
+            <a href="#login">Login</a>
+            <a href="#contacto" class="btn-nav">Contacto</a>
+            <a href="#" class="btn-nav" id="carrito-btn">Carrito (<span id="cart-count">0</span>)</a>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="text">
+            <h1>Componentes Informáticos Premium</h1>
+            <p>Rendimiento y calidad para tu setup profesional o gamer.</p>
+            <a href="#productos" class="btn-hero">Explorar Productos</a>
+        </div>
+        <img src="" alt="PC Gamer" />
+    </section>
+
+    <!-- PRODUCTOS -->
+    <section class="productos" id="productos">
+        <h2>Productos Destacados</h2>
+
+        <!-- BUSCADOR -->
+        <div class="buscador">
+            <input type="text" id="search" placeholder="Buscar productos..." />
+        </div>
+
+        <div class="grid" id="product-grid">
+            <!-- Aquí van tus productos como antes -->
+        </div>
+    </section>
+     <div class="grid" id="product-grid">
+
+            <!-- Procesador -->
+            <div class="item" data-name="Procesador Intel i7">
+                <img src="images/1.jpeg" alt="Procesador Intel i7" />
+                <h4>Procesador Intel i7</h4>
+                <h3>Procesador Intel Core i7 12th Gen</h3>
+                <p>Potencia ideal para gaming y productividad avanzada.</p>
+                <span class="precio" data-price="320">$320</span>
+                <button class="add-cart">Agregar al carrito</button>
+            </div>
+
+            <!-- Tarjeta gráfica -->
+            <div class="item" data-name="Tarjeta gráfica NVIDIA RTX">
+                <img src="images/2.jpeg" alt="Tarjeta gráfica NVIDIA RTX" />
+                <h4>Tarjeta gráfica NVIDIA RTX</h4>
+                <h3>NVIDIA GeForce RTX 4070</h3>
+                <p>Ray Tracing de última generación y DLSS 3.</p>
+                <span class="precio" data-price="650">$650</span>
+                <button class="add-cart">Agregar al carrito</button>
+            </div>
+
+            <!-- Memoria RAM -->
+            <div class="item" data-name="Memoria RAM Corsair">
+                <img src="images/3.jpeg" alt="Memoria RAM Corsair" />
+                <h4>Memoria RAM Corsair</h4>
+                <h3>Corsair Vengeance 16GB DDR4</h3>
+                <p>Rendimiento óptimo para multitarea y gaming.</p>
+                <span class="precio" data-price="85">$85</span>
+                <button class="add-cart">Agregar al carrito</button>
+            </div>
+
+            <!-- SSD -->
+            <div class="item" data-name="SSD Samsung NVMe">
+                <img src="images/4.jpeg" alt="SSD Samsung NVMe" />
+                <h4>SSD Samsung 1TB NVMe</h4>
+                <h3>SSD Samsung NVMe 1TB</h3>
+                <p>Velocidades extremas de lectura y escritura.</p>
+                <span class="precio" data-price="140">$140</span>
+                <button class="add-cart">Agregar al carrito</button>
+            </div>
+
+            <!-- Placa base -->
+            <div class="item" data-name="Placa Base ASUS ROG STRIX">
+                <img src="images/8.jpeg" alt="Placa base ASUS ROG" />
+                <h4>Placa Base ASUS ROG STRIX</h4>
+                <h3>Placa Base ASUS ROG STRIX</h3>
+                <p>Máxima estabilidad y diseño premium para tu PC.</p>
+                <span class="precio" data-price="210">$210</span>
+                <button class="add-cart">Agregar al carrito</button>
+            </div>
+
+            <!-- Fuente -->
+            <div class="item" data-name="Fuente Corsair 750W">
+                <img src="images/5.jpeg" alt="Fuente Corsair 750W" />
+                <h4>Fuente de poder Corsair</h4>
+                <h3>Fuente Corsair 750W 80+ Gold</h3>
+                <p>Eficiencia energética y operación silenciosa.</p>
+                <span class="precio" data-price="95">$95</span>
+                <button class="add-cart">Agregar al carrito</button>
+            </div>
+
+            <!-- Teclado -->
+            <div class="item" data-name="Teclado mecánico RGB">
+                <img src="images/6.jpeg" alt="Teclado RGB" />
+                <h4>Teclado mecánico RGB</h4>
+                <h3>Teclado Mecánico RGB</h3>
+                <p>Switches precisos y retroiluminación personalizable.</p>
+                <span class="precio" data-price="120">$120</span>
+                <button class="add-cart">Agregar al carrito</button>
+            </div>
+
+            <!-- Monitor -->
+            <div class="item" data-name="Monitor gamer 144Hz">
+                <img src="images/7.jpeg" alt="Monitor 144Hz" />
+                <h4>Monitor gamer 144Hz</h4>
+                <h3>Monitor Gamer 144Hz 27"</h3>
+                <p>Fluidez absoluta para juegos competitivos.</p>
+                <span class="precio" data-price="280">$280</span>
+                <button class="add-cart">Agregar al carrito</button>
+            </div>
+
+            <!-- Raton -->
+            <div class="item" data-name="Raton Gaming">
+                <img src="images/9.jpeg" alt="Raton Gaming" />
+                <h4>Raton Gaming</h4>
+                <h3>Raton Gaming Logitech G502</h3>
+                <p>Fluidez absoluta para juegos competitivos.</p>
+                <span class="precio" data-price="80">$80</span>
+                <button class="add-cart">Agregar al carrito</button>
+            </div>
+
+            <!-- Caja PC -->
+            <div class="item" data-name="Caja PC Gaming">
+                <img src="images/10.jpeg" alt="Caja PC Gaming" />
+                <h4>Caja PC Gaming</h4>
+                <h3>Caja PC Gaming Color Rojo</h3>
+                <p>Protección y ventilación para el PC</p>
+                <span class="precio" data-price="150">$150</span>
+                <button class="add-cart">Agregar al carrito</button>
+            </div>
+
+            <!-- Portátil -->
+            <div class="item" data-name="Portátil gaming">
+                <img src="images/11.jpeg" alt="Portatil gaming" />
+                <h4>Portatil gaming</h4>
+                <h3>Portatil gaming MSI</h3>
+                <p>Fluidez absoluta para juegos competitivos.</p>
+                <span class="precio" data-price="1080">$1080</span>
+                <button class="add-cart">Agregar al carrito</button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- LOGIN -->
+    <section class="login-section" id="login">
+        <h2>Iniciar Sesión</h2>
+        <form class="login-box">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Ingresa tu correo" required />
+            <label for="password">Contraseña</label>
+            <input type="password" id="password" placeholder="Ingresa tu contraseña" required />
+            <button type="submit" class="btn-login">Entrar</button>
+            <p class="registro-link">¿No tienes cuenta? <a href="#">Registrarse</a></p>
+        </form>
+    </section>
+
+    <!-- CARRITO -->
+    <div id="carrito" class="carrito">
+        <h3>Tu Carrito</h3>
+        <ul id="cart-items"></ul>
+        <p>Total: $<span id="cart-total">0</span></p>
+        <button id="close-cart">Cerrar</button>
+    </div>
+
+    <!-- FOOTER -->
+    <footer id="contacto">
+        <p>© 2025 TechStore • Componentes Informáticos Profesionales</p>
+        <p>Email: contacto@techstore.com | Tel: +34 600 123 456</p>
+    </footer>
+
+    <script>
+        // Carrito
+        const cart = [];
+        const cartBtn = document.getElementById('carrito-btn');
+        const cartDiv = document.getElementById('carrito');
+        const cartItems = document.getElementById('cart-items');
+        const cartTotal = document.getElementById('cart-total');
+        const closeCartBtn = document.getElementById('close-cart');
+        const cartCount = document.getElementById('cart-count');
+
+        document.querySelectorAll('.add-cart').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const itemDiv = e.target.parentElement;
+                const name = itemDiv.dataset.name;
+                const price = parseFloat(itemDiv.querySelector('.precio').dataset.price);
+                cart.push({name, price});
+                updateCart();
+            });
+        });
+
+        function updateCart() {
+            cartItems.innerHTML = '';
+            let total = 0;
+            cart.forEach(product => {
+                const li = document.createElement('li');
+                li.textContent = `${product.name} - $${product.price}`;
+                cartItems.appendChild(li);
+                total += product.price;
+            });
+            cartTotal.textContent = total;
+            cartCount.textContent = cart.length;
+        }
+
+        cartBtn.addEventListener('click', () => {
+            cartDiv.style.display = 'block';
+        });
+
+        closeCartBtn.addEventListener('click', () => {
+            cartDiv.style.display = 'none';
+        });
+
+        // Buscador
+        const searchInput = document.getElementById('search');
+        searchInput.addEventListener('input', () => {
+            const filter = searchInput.value.toLowerCase();
+            document.querySelectorAll('#product-grid .item').forEach(item => {
+                const name = item.dataset.name.toLowerCase();
+                item.style.display = name.includes(filter) ? 'flex' : 'none';
+            });
+        });
+    </script>
+</body>
+</html>
